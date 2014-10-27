@@ -2,6 +2,9 @@ import java.util.*;
 
 public abstract class Contact
 {
+    /**
+        This abstract class is for storing different types of contacts.
+    */
     private String fname;
     private String lname;
     private Address address;

@@ -43,8 +43,7 @@ public class BusinessContact extends Contact
     public ArrayList<String> getContact()
     {
         ArrayList<String> info = new ArrayList<String>();
-        info.add(getFname());
-        info.add(getLname());
+        info.add(getFname() + " " + getLname());
         info.add(jobTitle);
         info.add(organization);
         info.add(getAddress());
