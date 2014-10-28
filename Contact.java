@@ -1,6 +1,6 @@
 import java.util.*;
 
-public abstract class Contact
+public abstract class Contact implements Comparable<Contact>
 {
     /**
         This abstract class is for storing different types of contacts.
@@ -52,5 +52,28 @@ public abstract class Contact
     public String getEmail()
     {
         return email;
+    }
+    public String toString()
+    {
+        StringBuilder s = new StringBuilder();
+        ArrayList<String> a = this.getContact();
+        for(int i = 0; i < a.size(); i++)
+        {
+            s.append(a.get(i) + " ");
+        }
+        String result = s.toString();
+        return result.trim();
+    }
+    public int hashCode()
+    {
+        return this.toString().hashCode();
+    }
+    public boolean equals(Contact c)
+    {
+        return this.toString().equals(c.toString());
+    }
+    public int compareTo(Contact c)
+    {
+        return this.toString().compareTo(c.toString());
     }
 }

@@ -6,7 +6,7 @@ public class PersonalContactTester
         PersonalContact samTClaws = new PersonalContact
         (
             "Sam", "Claws", "146", Address.Direction.N, "Polar", "Way",
-            "Anchorage", Address.State.AK, "11111", "5555551254", "olesamclaws@email.com",
+            "Anchorage", Address.State.AK, "11111", "5555551254", "olesamtclaws@email.com",
             1990, 10, 01
         );
         PersonalContact hatGuy = new PersonalContact
@@ -18,7 +18,7 @@ public class PersonalContactTester
         PersonalContact hatDude = new PersonalContact
         (
             "Hat", "Dude", "432", Address.Direction.S, "North", "ST",
-            "Nowhere", Address.State.AR, "22222", "5555559451", "",
+            "Nowhere", Address.State.AR, "22222", "5555559450", "",
             1975, 03, 20
         );
         PersonalContact headWearMan = new PersonalContact
@@ -39,27 +39,29 @@ public class PersonalContactTester
             "America", Address.State.MN, "00000", "5555551122", "joeeveryman@everywhere.com",
             1980, 12, 19
         );
-        ArrayList<Contact> myContacts = new ArrayList<Contact>();
+        TreeSet<Contact> myContacts = new TreeSet<Contact>();
+        Iterator<Contact> iterator;
         myContacts.add(johnJohns);
         myContacts.add(samTClaws);
         myContacts.add(hatGuy);
         myContacts.add(hatDude);
         myContacts.add(headWearMan);
         myContacts.add(joeEveryman);
-        ContactCompare test = new ContactCompare();
-        Collections.sort(myContacts, test);
-        for(int i = 0; i < myContacts.size(); i++)
+        iterator = myContacts.iterator();
+        
+        while(iterator.hasNext())
         {
-            for(int j = 0; j < myContacts.get(i).getContact().size(); j++)
+            ArrayList<String> temp = iterator.next().getContact();
+            for(int i = 0; i < temp.size(); i++)
             {
-                String temp = myContacts.get(i).getContact().get(j);
-                if(temp.equals(""))
+                String element = temp.get(i);
+                if(element.equals(""))
                 {
                     continue;
                 }
                 else
                 {
-                    System.out.println(temp);
+                    System.out.println(element);
                 }
             }
             System.out.println();
