@@ -23,13 +23,15 @@ public class BusinessContact extends Contact
     public BusinessContact
     (
         String fn, String ln,
-        String no, Address.Direction dir, String sn, String sTag, String c, Address.State st, String z,
+        String no, String dir, String sn, String sTag, String c, String st, String z,
         String pn, String em, String jt, String org
     )
     {
+        dir = dir.toUpperCase();
+        st = st.toUpperCase();
         setFname(fn);
         setLname(ln);
-        setAddress(new Address(no, dir, sn, sTag, c, st, z));
+        setAddress(new Address(no, Address.Direction.valueOf(dir), sn, sTag, c, Address.State.valueOf(st), z));
         setPhoneNo(new PhoneNo(pn));
         setEmail(em);
         jobTitle = jt;

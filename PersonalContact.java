@@ -1,4 +1,5 @@
 import java.util.*;
+import java.text.*;
 
 public class PersonalContact extends Contact
 {
@@ -17,23 +18,23 @@ public class PersonalContact extends Contact
         @param z the address zip code
         @param pn the contact phone number
         @param em the contact email address
-        @param yyyy a four-digit year
-        @param mm a two-digit month
-        @param dd a two-digit day
+        @param dob an eight-digit date in the form YYYYMMDD
     */
     public PersonalContact
     (
         String fn, String ln,
-        String no, Address.Direction dir, String sn, String sTag, String c, Address.State st, String z,
-        String pn, String em, int yyyy, int mm, int dd
+        String no, String dir, String sn, String sTag, String c, String st, String z,
+        String pn, String em, String dob
     )
     {
+        dir = dir.toUpperCase();
+        st = st.toUpperCase();
         setFname(fn);
         setLname(ln);
-        setAddress(new Address(no, dir, sn, sTag, c, st, z));
+        setAddress(new Address(no, Address.Direction.valueOf(dir), sn, sTag, c, Address.State.valueOf(st), z));
         setPhoneNo(new PhoneNo(pn));
         setEmail(em);
-        setDateOfBirth(yyyy, mm, dd);
+        setDateOfBirth(dob);
     }
 
     /**
@@ -42,9 +43,24 @@ public class PersonalContact extends Contact
         @param m month
         @param d day
     */
-    public void setDateOfBirth(int y, int m, int d) throws IllegalArgumentException
+    public void setDateOfBirth(String dob) throws IllegalArgumentException
     {
-        if(y < 1000 || (m < 1 || m > 12) || (d < 1 || d > 31))
+        int y;
+        int m;
+        int d;
+        
+        if(dob.length() < 8)
+        {
+            throw new IllegalArgumentException();
+        }
+        else
+        {
+            y = Integer.parseInt(dob.substring(0, 4));
+            m = Integer.parseInt(dob.substring(4, 6));
+            m = m - 1;
+            d = Integer.parseInt(dob.substring(6));
+        }
+        if(y < 1000 || (m < 0 || m > 11) || (d < 1 || d > 31))
         {
             throw new IllegalArgumentException("Illegal values supplied.  Expected YYYY, MM, DD.");
         }
@@ -57,12 +73,14 @@ public class PersonalContact extends Contact
     
     public ArrayList<String> getContact()
     {
+        SimpleDateFormat f = new SimpleDateFormat("MM/dd/yyyy");
+        String dobResult = f.format(dateOfBirth).toString();
         ArrayList<String> info = new ArrayList<String>();
         info.add(getFname() + " " + getLname());
         info.add(getAddress());
         info.add(getPhoneNo());
         info.add(getEmail());
-        info.add(dateOfBirth.toString());
+        info.add(dobResult);
         return info;
     }
 }

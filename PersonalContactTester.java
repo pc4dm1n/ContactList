@@ -5,39 +5,39 @@ public class PersonalContactTester
     {
         PersonalContact samTClaws = new PersonalContact
         (
-            "Sam", "Claws", "146", Address.Direction.N, "Polar", "Way",
-            "Anchorage", Address.State.AK, "11111", "5555551254", "olesamtclaws@email.com",
-            1990, 10, 01
+            "Sam", "Claws", "146", "N", "Polar", "Way",
+            "Anchorage", "AK", "11111", "5555551254", "olesamtclaws@email.com",
+            "19900101"
         );
         PersonalContact hatGuy = new PersonalContact
         (
-            "Hat", "Guy", "432", Address.Direction.S, "North", "ST",
-            "Nowhere", Address.State.AR, "22222", "5555559451", "hatlovindude@yahoo.fake",
-            1975, 03, 20
+            "Hat", "Guy", "432", "S", "North", "ST",
+            "Nowhere", "ar", "22222", "5555559451", "hatlovindude@yahoo.fake",
+            "19750320"
         );
         PersonalContact hatDude = new PersonalContact
         (
-            "Hat", "Dude", "432", Address.Direction.S, "North", "ST",
-            "Nowhere", Address.State.AR, "22222", "5555559450", "",
-            1975, 03, 20
+            "Hat", "Dude", "432", "S", "North", "ST",
+            "Nowhere", "AR", "22222", "5555559450", "",
+            "19701010"
         );
         PersonalContact headWearMan = new PersonalContact
         (
-            "Head Wear", "Man", "516", Address.Direction.SW, "North", "AVE",
-            "Nowhere", Address.State.AR, "22222", "5555559451", "lovetowearheadfashion@uprllynvrhrdofthisdomain.com",
-            1970, 03, 20
+            "Head Wear", "Man", "516", "S", "North", "AVE",
+            "Nowhere", "AR", "22222", "5555559451", "lovetowearheadfashion@uprllynvrhrdofthisdomain.com",
+            "19700220"
         );
         PersonalContact johnJohns = new PersonalContact
         (
-            "John", "Johnson", "21439", Address.Direction.SW, "Main", "BLVD",
-            "Sometown", Address.State.IA, "01234", "5555551124", "",
-            1970, 8, 31
+            "John", "Johnson", "21439", "S", "Main", "BLVD",
+            "Sometown", "IA", "01234", "5555551124", "",
+            "19600601"
         );
         PersonalContact joeEveryman = new PersonalContact
         (
-            "Joe", "Everyman", "111", Address.Direction.E, "Every", "ST",
-            "America", Address.State.MN, "00000", "5555551122", "joeeveryman@everywhere.com",
-            1980, 12, 19
+            "Joe", "Everyman", "111", "E", "Every", "ST",
+            "America", "MN", "00000", "5555551122", "joeeveryman@everywhere.com",
+            "19801219"
         );
         TreeSet<Contact> myContacts = new TreeSet<Contact>();
         Iterator<Contact> iterator;
