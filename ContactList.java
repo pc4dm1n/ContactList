@@ -59,7 +59,23 @@ public class ContactList
                     }
                     else if(selection == 2) // add personal contact
                     {
-                        
+                        boolean complete = false;
+                        while(!complete)
+                        {
+                            ArrayList<Object> info = new ArrayList<Object>();
+                            System.out.println();
+                            System.out.println("Create a new personal contact:");
+                            System.out.print("Enter contact first name>");
+                            info.add(in.next());
+                            System.out.print("Enter contact last name>");
+                            info.add(in.next());
+                            System.out.print("Enter building number>");
+                            info.add(in.next());
+                            System.out.print("Enter a cardinal direction>");
+                            info.add(in.next());
+                            System.out.println(info); // TESTING ONLY !!!
+                            complete = true;
+                        }
                     }
                     else if(selection == 1) // add business contact
                     {

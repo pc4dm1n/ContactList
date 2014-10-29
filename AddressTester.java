@@ -10,5 +10,7 @@ public class AddressTester
         add2.setAddress("1111", Address.Direction.S, "Fake", "BLVD", "Cityhere", Address.State.WY, "00000");
         System.out.println(add1.getAddress());
         System.out.println(add2.getAddress());
+        add1.setDirection("s");
+        System.out.println(add1.getAddress());
     }
 }

@@ -70,4 +70,37 @@ public class Address
         address.append(buildingNum + " " + direction + " " + streetName + " " + streetTag + " " + city + " " + state + " " + zip);
         return address.toString();
     }
+    public void setDirection(String s) throws IllegalArgumentException
+    {
+        String temp = s.toUpperCase();
+        switch(temp)
+        {
+            case "N" :
+                this.direction = Direction.N;
+                break;
+            case "NE" :
+                this.direction = Direction.NE;
+                break;
+            case "E" :
+                this.direction = Direction.E;
+                break;
+            case "SE" :
+                this.direction = Direction.SE;
+                break;
+            case "S" :
+                this.direction = Direction.S;
+                break;
+            case "SW" :
+                this.direction = Direction.SW;
+                break;
+            case "W" :
+                this.direction = Direction.W;
+                break;
+            case "NW" :
+                this.direction = Direction.NW;
+                break;
+            default :
+                throw new IllegalArgumentException();
+        }
+    }
 }
