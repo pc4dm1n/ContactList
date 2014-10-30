@@ -25,7 +25,7 @@ public class PersonalContact extends Contact
         String fn, String ln,
         String no, String dir, String sn, String sTag, String c, String st, String z,
         String pn, String em, String dob
-    )
+    ) throws IllegalArgumentException
     {
         dir = dir.toUpperCase();
         st = st.toUpperCase();
@@ -48,10 +48,10 @@ public class PersonalContact extends Contact
         int y;
         int m;
         int d;
-        
+        String err = "Illegal values supplied.  Expected YYYYMMDD.";
         if(dob.length() < 8)
         {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(err);
         }
         else
         {
@@ -62,7 +62,7 @@ public class PersonalContact extends Contact
         }
         if(y < 1000 || (m < 0 || m > 11) || (d < 1 || d > 31))
         {
-            throw new IllegalArgumentException("Illegal values supplied.  Expected YYYY, MM, DD.");
+            throw new IllegalArgumentException(err);
         }
         else
         {

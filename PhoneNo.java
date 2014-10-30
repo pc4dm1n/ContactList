@@ -19,7 +19,14 @@ public class PhoneNo
     */
     public PhoneNo(String num)
     {
-        setPhoneNo(num);
+        try
+        {
+            setPhoneNo(num);
+        }
+        catch(IllegalArgumentException e)
+        {
+            System.out.println(e);
+        }
     }
     
     /**
@@ -38,7 +45,7 @@ public class PhoneNo
     {
         if(num.length() != 10)
         {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Expected 10-digit number without format characters (5555555555).");
         }
         else
         {

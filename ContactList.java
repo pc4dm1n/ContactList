@@ -64,49 +64,65 @@ public class ContactList
                     else if(selection == 2) // add personal contact
                     {
                         boolean complete = false;
+                        String input = "";
                         while(!complete)
                         {
                             ArrayList<String> info = new ArrayList<String>();
+                            in.nextLine(); // consume newline character from main menu
                             System.out.println();
                             System.out.println("Create a new personal contact:");
                             System.out.print("Enter contact first name> ");
-                            info.add(in.next());
+                            info.add(in.nextLine());
                             System.out.print("Enter contact last name> ");
-                            info.add(in.next());
+                            info.add(in.nextLine());
                             System.out.println("Enter contact address information:");
                             System.out.print("Enter building number> ");
-                            info.add(in.next());
+                            info.add(in.nextLine());
                             System.out.print("Enter cardinal direction \"N, S, SE...\"> ");
-                            info.add(in.next());
+                            info.add(in.nextLine());
                             System.out.print("Enter street name> ");
-                            info.add(in.next());
+                            info.add(in.nextLine());
                             System.out.print("Enter street tag \"AVE, BLVD...\"> ");
-                            info.add(in.next());
+                            info.add(in.nextLine());
                             System.out.print("Enter city> ");
-                            info.add(in.next());
+                            info.add(in.nextLine());
                             System.out.print("Enter state code \"AK, AL...\"> ");
-                            info.add(in.next());
+                            info.add(in.nextLine());
                             System.out.print("Enter zip code> ");
-                            info.add(in.next());
+                            info.add(in.nextLine());
                             System.out.print("Enter contact ten-digit phone number \"5555555555\"> ");
-                            info.add(in.next());
+                            info.add(in.nextLine());
                             System.out.print("Enter contact email address> ");
-                            info.add(in.next());
+                            info.add(in.nextLine());
                             System.out.print("Enter contact date of birth \"YYYYMMDD\"> ");
-                            info.add(in.next());
-                            pContacts.add
-                            (
+                            info.add(in.nextLine());
+                            try
+                            {
+                                pContacts.add
                                 (
-                                    new PersonalContact
                                     (
-                                        info.get(0), info.get(1), info.get(2), info.get(3), info.get(4),
-                                        info.get(5), info.get(6), info.get(7), info.get(8), info.get(9),
-                                        info.get(10), info.get(11)
+                                        new PersonalContact
+                                        (
+                                            info.get(0), info.get(1), info.get(2), info.get(3), info.get(4),
+                                            info.get(5), info.get(6), info.get(7), info.get(8), info.get(9),
+                                            info.get(10), info.get(11)
+                                        )
                                     )
-                                )
-                            );
+                                );
+                            }
+                            catch(IllegalArgumentException e)
+                            {
+                                System.out.println(e);
+                            }
                             System.out.print("Create another contact (Y or N): ");
-                            String input = in.next();
+                            if(in.hasNext()) 
+                            {
+                                input = in.next();
+                            }
+                            else
+                            {
+                                System.out.println("Invalid input");
+                            }
                             if(input.toLowerCase().equals("n"))
                             {
                                 complete = true;
@@ -119,46 +135,54 @@ public class ContactList
                         while(!complete)
                         {
                             ArrayList<String> info = new ArrayList<String>();
+                            in.nextLine(); // consume newline character from main menu
                             System.out.println();
                             System.out.println("Create a new business contact:");
                             System.out.print("Enter contact first name> ");
-                            info.add(in.next());
+                            info.add(in.nextLine());
                             System.out.print("Enter contact last name> ");
-                            info.add(in.next());
+                            info.add(in.nextLine());
                             System.out.println("Enter contact address information:");
                             System.out.print("Enter building number> ");
-                            info.add(in.next());
+                            info.add(in.nextLine());
                             System.out.print("Enter cardinal direction \"N, S, SE...\"> ");
-                            info.add(in.next());
+                            info.add(in.nextLine());
                             System.out.print("Enter street name> ");
-                            info.add(in.next());
+                            info.add(in.nextLine());
                             System.out.print("Enter street tag \"AVE, BLVD...\"> ");
-                            info.add(in.next());
+                            info.add(in.nextLine());
                             System.out.print("Enter city> ");
-                            info.add(in.next());
+                            info.add(in.nextLine());
                             System.out.print("Enter state code \"AK, AL...\"> ");
-                            info.add(in.next());
+                            info.add(in.nextLine());
                             System.out.print("Enter zip code> ");
-                            info.add(in.next());
+                            info.add(in.nextLine());
                             System.out.print("Enter contact ten-digit phone number \"5555555555\"> ");
-                            info.add(in.next());
+                            info.add(in.nextLine());
                             System.out.print("Enter contact email address> ");
-                            info.add(in.next());
+                            info.add(in.nextLine());
                             System.out.print("Enter job title> ");
-                            info.add(in.next());
+                            info.add(in.nextLine());
                             System.out.print("Enter organization name> ");
-                            info.add(in.next());
-                            bContacts.add
-                            (
+                            info.add(in.nextLine());
+                            try
+                            {
+                                bContacts.add
                                 (
-                                    new BusinessContact
                                     (
-                                        info.get(0), info.get(1), info.get(2), info.get(3), info.get(4),
-                                        info.get(5), info.get(6), info.get(7), info.get(8), info.get(9),
-                                        info.get(10), info.get(11), info.get(12)
+                                        new BusinessContact
+                                        (
+                                            info.get(0), info.get(1), info.get(2), info.get(3), info.get(4),
+                                            info.get(5), info.get(6), info.get(7), info.get(8), info.get(9),
+                                            info.get(10), info.get(11), info.get(12)
+                                        )
                                     )
-                                )
-                            );
+                                );
+                            }
+                            catch(IllegalArgumentException e)
+                            {
+                                System.out.println(e);
+                            }
                             System.out.print("Create another contact (Y or N): ");
                             String input = in.next();
                             if(input.toLowerCase().equals("n"))

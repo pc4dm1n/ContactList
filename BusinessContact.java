@@ -25,7 +25,7 @@ public class BusinessContact extends Contact
         String fn, String ln,
         String no, String dir, String sn, String sTag, String c, String st, String z,
         String pn, String em, String jt, String org
-    )
+    ) throws IllegalArgumentException
     {
         dir = dir.toUpperCase();
         st = st.toUpperCase();
