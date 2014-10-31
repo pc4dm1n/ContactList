@@ -4,7 +4,8 @@ import java.text.*;
 public class PersonalContact extends Contact
 {
     /**
-        This class extends the Contact class to produce peronal contact objects.
+        This class extends the Contact class to produce objects for storing personal
+		contacts.
     */
     private Date dateOfBirth;
     

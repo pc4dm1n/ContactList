@@ -1,6 +1,9 @@
 import java.util.*;
 public class BusinessContact extends Contact
 {
+	/**
+		This class extends Contact to create objects for storing business contacts.
+	*/
     private String jobTitle;
     private String organization;
     

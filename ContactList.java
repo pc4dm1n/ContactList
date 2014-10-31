@@ -210,6 +210,11 @@ public class ContactList
             }
         }
     }
+	/**
+		Iterates over a TreeSet of Contacts to printing
+		their contents to the console.
+		@param itr an iterator over a set of Contacts
+	*/
     public static void displayContacts(Iterator<Contact> itr)
     {
         while(itr.hasNext())

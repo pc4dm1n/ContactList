@@ -1,7 +1,7 @@
 public class PhoneNo
 {
     /**
-        This class creates phone number object for use with contacts
+        This class creates objects for storing phone numbers.
     */
     private StringBuilder number = new StringBuilder();
     
