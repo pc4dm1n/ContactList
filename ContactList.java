@@ -114,7 +114,7 @@ public class ContactList
                             {
                                 System.out.println(e);
                             }
-                            System.out.print("Create another contact (Y or N): ");
+                            System.out.print("Create another personal contact (Y or N): ");
                             if(in.hasNext()) 
                             {
                                 input = in.next();
@@ -183,7 +183,7 @@ public class ContactList
                             {
                                 System.out.println(e);
                             }
-                            System.out.print("Create another contact (Y or N): ");
+                            System.out.print("Create another business contact (Y or N): ");
                             String input = in.next();
                             if(input.toLowerCase().equals("n"))
                             {

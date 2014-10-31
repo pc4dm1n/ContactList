@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.regex.*;
 
 public abstract class Contact implements Comparable<Contact>
 {
@@ -45,9 +46,17 @@ public abstract class Contact implements Comparable<Contact>
     {
         return phoneNo.getPhoneNo();
     }
-    public void setEmail(String em)
+    public void setEmail(String em) throws IllegalArgumentException
     {
-        this.email = em;
+        boolean match = Pattern.matches(".+@.+\\..+", em);
+        if(match)
+        {
+            this.email = em;
+        }
+        else
+        {
+            throw new IllegalArgumentException("Error: invalid email address.");
+        }
     }
     public String getEmail()
     {

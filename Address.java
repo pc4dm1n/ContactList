@@ -1,5 +1,8 @@
 public class Address
 {
+    /**
+        This class creates Address objects for use with Contacts.
+    */
     public enum State
     {
         AL, AK, AZ, AR, CA, CO, CT, DE, FL, GA, HI, ID, IL,
@@ -33,6 +36,16 @@ public class Address
         this.state = State.AL;
         this.zip = "";
     }
+    /**
+        An overloaded constructor for building contacts with all necessary information.
+        @param no a building number.
+        @param dir a cardinal direction.
+        @param sn a street name
+        @param sTag a street tag (AVE, ST, BLVD, etc.)
+        @param c the name of a city
+        @param st a standard abbreviation representing one of the 50 United States or its territories.
+        @param z a zip code
+    */
     public Address(String no, Direction dir, String sn, String sTag, String c, State st, String z)
     {
         this();
@@ -46,7 +59,7 @@ public class Address
         @param sn a street name
         @param sTag a street tag (AVE, ST, BLVD, etc.)
         @param c the name of a city
-        @param st a state's abbreviation
+        @param st a standard abbreviation representing one of the 50 United States or its territories.
         @param z this address's zip code
     */
     public void setAddress(String no, Direction dir, String sn, String sTag, String c, State st, String z)

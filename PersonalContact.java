@@ -3,6 +3,9 @@ import java.text.*;
 
 public class PersonalContact extends Contact
 {
+    /**
+        This class extends the Contact class to produce peronal contact objects.
+    */
     private Date dateOfBirth;
     
     /**
@@ -38,10 +41,8 @@ public class PersonalContact extends Contact
     }
 
     /**
-        Gets dateOfBirth in number of milliseconds offset from Epoch
-        @param y year
-        @param m month
-        @param d day
+        Sets dateOfBirth from String (YYYYMMDD).
+        @param dob a String object representing a specific date
     */
     public void setDateOfBirth(String dob) throws IllegalArgumentException
     {
@@ -70,7 +71,10 @@ public class PersonalContact extends Contact
             dateOfBirth = c.getTime();
         }
     }
-    
+    /**
+        Gets all contact instance variables and returns them in an ArrayList<String>.
+        @return an ArrayList<String> of contact instance variables.
+    */
     public ArrayList<String> getContact()
     {
         SimpleDateFormat f = new SimpleDateFormat("MM/dd/yyyy");
@@ -80,7 +84,7 @@ public class PersonalContact extends Contact
         info.add(getAddress());
         info.add(getPhoneNo());
         info.add(getEmail());
-        info.add(dobResult);
+        info.add("Birthday: " + dobResult);
         return info;
     }
 }
