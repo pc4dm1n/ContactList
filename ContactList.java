@@ -39,14 +39,14 @@ public class ContactList
                     }
                     else if(selection == 3) // display contacts
                     {
-                        options.clear(); // re-purpose options
-                        options.add("Display business contacts.");
-                        options.add("Display personal contacts.");
-                        options.add("Return to main menu.");
-                        Menu displayMenu = new Menu(options);
+                        ArrayList<String> displayMenuOpt = new ArrayList<String>();
+                        displayMenuOpt.add("Display business contacts.");
+                        displayMenuOpt.add("Display personal contacts.");
+                        displayMenuOpt.add("Return to main menu.");
+                        Menu displayMenu = new Menu(displayMenuOpt);
                         System.out.println();
-                        boolean goBack = false;
-                        while(!goBack)
+                        boolean displaying = true;
+                        while(displaying)
                         {
                             for(int i = 0; i < displayMenu.getOptions().size(); i++)
                             {
@@ -56,12 +56,12 @@ public class ContactList
                             if(in.hasNextInt())
                             {
                                 int choice = in.nextInt();
-                                int index = 1;
                                 System.out.println();
                                 if(choice == 1) // display business contacts
                                 {
                                     if(bContacts.size() > 0)
                                     {
+										// PRINT ORDERED LIST OF NAMES THEN ALLOW DETAIL SELECTION
                                         System.out.println("=====================");
                                         System.out.println("| Business Contacts |");
                                         System.out.println("=====================");
@@ -69,7 +69,7 @@ public class ContactList
                                     }
                                     else
                                     {
-                                        System.out.println("No business contacts found.  Please enter business contacts.");
+                                        System.out.println("No business contacts found.  Please enter business contacts.\n");
                                     }
                                 }
                                 else if(choice == 2) // display personal contacts
@@ -83,17 +83,18 @@ public class ContactList
                                     }
                                     else
                                     {
-                                        System.out.println("No personal contacts found.  Please enter personal contacts.");
+                                        System.out.println("No personal contacts found.  Please enter personal contacts.\n");
                                     }
                                 }
                                 else if(choice == 3) // return to main
                                 {
-                                    goBack = true;
+                                    displaying = false;
                                 }
                             }
                             else
                             {
                                 System.out.println("Error: invalid selection.");
+								in.next();
                             }
                         }
                     }
