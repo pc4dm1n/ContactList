@@ -48,6 +48,7 @@ public class ContactList
                         boolean displaying = true;
                         while(displaying)
                         {
+                            System.out.println();
                             for(int i = 0; i < displayMenu.getOptions().size(); i++)
                             {
                                 System.out.printf("%s. %s\n", i + 1, displayMenu.getOptions().get(i));
@@ -61,11 +62,56 @@ public class ContactList
                                 {
                                     if(bContacts.size() > 0)
                                     {
-										// PRINT ORDERED LIST OF NAMES THEN ALLOW DETAIL SELECTION
-                                        System.out.println("=====================");
-                                        System.out.println("| Business Contacts |");
-                                        System.out.println("=====================");
-                                        itr = bContacts.iterator();
+                                        boolean detail = true;
+                                        while(detail)
+                                        {
+                                            System.out.println("=====================");
+                                            System.out.println("| Business Contacts |");
+                                            System.out.println("=====================");
+                                            itr = bContacts.iterator();
+                                            displayShortList(itr);
+                                            System.out.println();
+                                            System.out.print("Select a contact to view details (m to return to previous menu): ");
+                                            if(in.hasNext())
+                                            {
+                                                String input = in.next();
+                                                if(input.toLowerCase().equals("m")) // return to previous menu
+                                                {
+                                                    detail = false;
+                                                }
+                                                else
+                                                {
+                                                    Integer temp = 0;
+                                                    try
+                                                    {
+                                                        temp = temp.parseInt(input);
+                                                    }
+                                                    catch(NumberFormatException e)
+                                                    {
+                                                        System.out.println(err);
+                                                    }
+                                                    if(temp > 0 && temp <= bContacts.size())
+                                                    {
+                                                        BusinessContact[] bDetail = bContacts.toArray(new BusinessContact[bContacts.size()]);
+                                                        ArrayList<String> cDetail = bDetail[temp - 1].getContact();
+                                                        System.out.println();
+                                                        for(int i = 0; i < cDetail.size(); i++)
+                                                        {
+                                                            System.out.println(cDetail.get(i));
+                                                        }
+                                                        System.out.println();
+                                                    }
+                                                    else
+                                                    {
+                                                        System.out.println(err);
+                                                    }
+                                                }
+                                            }
+                                            else
+                                            {
+                                                System.out.println(err);
+                                            }
+                                        }
                                     }
                                     else
                                     {
@@ -76,10 +122,56 @@ public class ContactList
                                 {
                                     if(pContacts.size() > 0)
                                     {
-                                        System.out.println("=====================");
-                                        System.out.println("| Personal Contacts |");
-                                        System.out.println("=====================");
-                                        itr = pContacts.iterator();
+                                        boolean detail = true;
+                                        while(detail)
+                                        {
+                                            System.out.println("=====================");
+                                            System.out.println("| Personal Contacts |");
+                                            System.out.println("=====================");
+                                            itr = pContacts.iterator();
+                                            displayShortList(itr);
+                                            System.out.println();
+                                            System.out.print("Select a contact to view details (m to return to previous menu): ");
+                                            if(in.hasNext())
+                                            {
+                                                String input = in.next();
+                                                if(input.toLowerCase().equals("m")) // return to previous menu
+                                                {
+                                                    detail = false;
+                                                }
+                                                else
+                                                {
+                                                    Integer temp = 0;
+                                                    try
+                                                    {
+                                                        temp = temp.parseInt(input);
+                                                    }
+                                                    catch(NumberFormatException e)
+                                                    {
+                                                        System.out.println(err);
+                                                    }
+                                                    if(temp > 0 && temp <= pContacts.size())
+                                                    {
+                                                        PersonalContact[] pDetail = pContacts.toArray(new PersonalContact[pContacts.size()]);
+                                                        ArrayList<String> cDetail = pDetail[temp - 1].getContact();
+                                                        System.out.println();
+                                                        for(int i = 0; i < cDetail.size(); i++)
+                                                        {
+                                                            System.out.println(cDetail.get(i));
+                                                        }
+                                                        System.out.println();
+                                                    }
+                                                    else
+                                                    {
+                                                        System.out.println(err);
+                                                    }
+                                                }
+                                            }
+                                            else
+                                            {
+                                                System.out.println(err);
+                                            }
+                                        }
                                     }
                                     else
                                     {
@@ -93,7 +185,7 @@ public class ContactList
                             }
                             else
                             {
-                                System.out.println("Error: invalid selection.");
+                                System.out.println(err);
 								in.next();
                             }
                         }
