@@ -39,26 +39,62 @@ public class ContactList
                     }
                     else if(selection == 3) // display contacts
                     {
+                        options.clear(); // re-purpose options
+                        options.add("Display business contacts.");
+                        options.add("Display personal contacts.");
+                        options.add("Return to main menu.");
+                        Menu displayMenu = new Menu(options);
                         System.out.println();
-                        if(bContacts.size() > 0)
+                        boolean goBack = false;
+                        while(!goBack)
                         {
-                            System.out.println("=====================");
-                            System.out.println("| Business Contacts |");
-                            System.out.println("=====================");
-                            itr = bContacts.iterator();
-                            displayContacts(itr);
-                        }
-                        if(pContacts.size() > 0)
-                        {
-                            System.out.println("=====================");
-                            System.out.println("| Personal Contacts |");
-                            System.out.println("=====================");
-                            itr = pContacts.iterator();
-                            displayContacts(itr);
-                        }
-                        else if(bContacts.size() == 0 && pContacts.size() == 0)
-                        {
-                            System.out.println("No contacts found.  Please enter business and/or personal contacts.");
+                            for(int i = 0; i < displayMenu.getOptions().size(); i++)
+                            {
+                                System.out.printf("%s. %s\n", i + 1, displayMenu.getOptions().get(i));
+                            }
+                            System.out.printf("\nChoose an option: ");
+                            if(in.hasNextInt())
+                            {
+                                int choice = in.nextInt();
+                                int index = 1;
+                                System.out.println();
+                                if(choice == 1) // display business contacts
+                                {
+                                    if(bContacts.size() > 0)
+                                    {
+                                        System.out.println("=====================");
+                                        System.out.println("| Business Contacts |");
+                                        System.out.println("=====================");
+                                        itr = bContacts.iterator();
+                                    }
+                                    else
+                                    {
+                                        System.out.println("No business contacts found.  Please enter business contacts.");
+                                    }
+                                }
+                                else if(choice == 2) // display personal contacts
+                                {
+                                    if(pContacts.size() > 0)
+                                    {
+                                        System.out.println("=====================");
+                                        System.out.println("| Personal Contacts |");
+                                        System.out.println("=====================");
+                                        itr = pContacts.iterator();
+                                    }
+                                    else
+                                    {
+                                        System.out.println("No personal contacts found.  Please enter personal contacts.");
+                                    }
+                                }
+                                else if(choice == 3) // return to main
+                                {
+                                    goBack = true;
+                                }
+                            }
+                            else
+                            {
+                                System.out.println("Error: invalid selection.");
+                            }
                         }
                     }
                     else if(selection == 2) // add personal contact
@@ -208,6 +244,20 @@ public class ContactList
                 System.out.println();
                 in.next(); // prevent infinite looping if non-int is given
             }
+        }
+    }
+    /**
+        Displays a short list of contacts using first and last name values.
+        @param itr an iterator for a particular set of contacts.
+    */
+    public static void displayShortList(Iterator<Contact> itr)
+    {
+        int index = 1;
+        while(itr.hasNext())
+        {
+            Contact temp = itr.next();
+            System.out.printf("%s. %s %s\n", index, temp.getFname(), temp.getLname());
+            index++;
         }
     }
 	/**
